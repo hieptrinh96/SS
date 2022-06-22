@@ -15,6 +15,30 @@ const notes = [{
     body: 'Get a new seat'
 }]
 
+//to render our information 
+// create a new object with an empty string
+const filters = {
+    searchText: ''
+}
+// create a new function that filters what we want 
+const renderNotes = (notes, filters) => {
+    const filteredNotes = notes.filter(note => {
+        // in this case, we want to filter the notes obj so it only contains what we put
+        // which is why we put filters, our empty string, and the searchText
+        return note.title.toLowerCase().includes(filters.searchText.toLowerCase())
+    })
+    // this line would clear what we've been adding 
+    document.querySelector('#notes').innerHTML = '';
+    filteredNotes.forEach(note => {
+        const noteEl = document.createElement('p');
+        // this iterates and creates new p elements that is the note.title
+        noteEl.textContent = note.title;
+        // we're just adding them to our div id
+        document.querySelector('#notes').appendChild(noteEl);
+    })
+}
+renderNotes(notes, filters);
+
 // this gives us access to our button element. 
 // the .addEventListener enables us to choose what happens to the button 
 // since we chose click, when we click on the button, the arrow function runs 
@@ -37,6 +61,11 @@ document.querySelector('#remove-all').addEventListener('click', () => {
     document.querySelectorAll('.note').forEach(note => note.remove())
 })
 
+document.querySelector('#search-text').addEventListener('input', (e) => {
+    filters.searchText = e.target.value;
+    renderNotes(notes, filters)
+})
+
 // you can also chain these together (refer to udemy for reference)
 
 // Query all and remove
@@ -48,3 +77,7 @@ document.querySelector('#remove-all').addEventListener('click', () => {
 // })
 
 
+// set up a div so we can move it anywehre we want 
+// we can target specific one with the id's 
+// the innerHTML is used to clear the info 
+ 
