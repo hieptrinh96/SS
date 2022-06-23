@@ -4,10 +4,17 @@
     <body>
         <h1> Check List</h1>
         <h2> Things to be completed</h2>
-        <input id="Tasks" placeholder="Tasks">
-        <button id="create-tasks">Add a task</button>
-        <input id="search-text" placeholder="Filter Tasks">
+        <input id="search-text" type='text'placeholder="Filter Tasks">
+        <select id="filter-by">
+            <option value="byEdited">Sort by last edited</option>
+            <option value="byCreated">Sort by recently created</option>
+            <option value="alphabetical">Sort alphabetically</option>
+        </select>
         <div id="Things"></div>
+        <form id="new-checklist">
+            <input type="text" placeholder="Something to do" name="text">
+            <button>Add to Check List</button>
+        </form>
         <script src="list.js"></script>
     </body>
 </html>

@@ -19,11 +19,14 @@ const todos = [{
 // print summary message with p 
                     // start   
 const filters = {
-    searchText: ''
+    searchText: '',
+    hideCompleted: false
 }
 const renderTodos = (todos, filters) => {
     const filteredTodos = todos.filter(todo => {
-        return todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
+        const searchTextToMatch =  todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
+        const hideCompletedMatch = !filters.hideCompleted || !todo.completed
+        return searchTextToMatch && hideCompletedMatch
     })
     const incomplete = filteredTodos.filter(todo => {
         return !todo.completed
@@ -55,19 +58,35 @@ renderTodos(todos, filters)
                         // end
 // creqate access to the button element
 // changing the button to use it's unique id
-document.querySelector('#start').addEventListener('click', (e) => {
-    console.log('New task created') ;
-})
+// document.querySelector('#start').addEventListener('click', (e) => {
+//     console.log('New task created') ;
+// })
 //print paragraph for each to do, use text value
 
-document.querySelector('#Enter-Tasks').addEventListener('input', (e) => {
-    console.log(e.target.value);
-})
+// document.querySelector('#Enter-Tasks').addEventListener('input', (e) => {
+//     console.log(e.target.value);
+// })
 
 document.querySelector('#search-text').addEventListener('input', (e) => {
     filters.searchText = e.target.value
     renderTodos(todos, filters)
 })
+
+document.querySelector('#Hide-Completed').addEventListener('change', (e) => {
+      filters.hideCompleted = e.target.checked;
+      renderTodos(todos, filters);
+})
+
+// document.querySelector('#new-todo').addEventListener('submit', (e) => {
+//     e.preventDefault();
+//     todos.push({
+//         text: e.target.elements.text.value,
+//         completed: false
+//     })
+//     renderTodos(todos, filters);
+//     e.target.elements.text.value = '';
+// })
+
 
 // this hides all the text and turns them into whatever we put in the textContent
 // p.forEach(ps => {

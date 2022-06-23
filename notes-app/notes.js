@@ -57,14 +57,23 @@ document.querySelector('#create-note').addEventListener('click', e => {
 
 // id's use # while classes use .
 // selector is used for individual id's, selectorAll is used for classes
-document.querySelector('#remove-all').addEventListener('click', () => {
-    document.querySelectorAll('.note').forEach(note => note.remove())
-})
+// document.querySelector('#remove-all').addEventListener('click', () => {
+//     document.querySelectorAll('.note').forEach(note => note.remove())
+// })
 
 document.querySelector('#search-text').addEventListener('input', (e) => {
     filters.searchText = e.target.value;
     renderNotes(notes, filters)
 })
+document.querySelector('#for-fun').addEventListener('change', (e) => {
+    console.log(e.target.checked)
+})
+// document.querySelector('#name-form').addEventListener('submit', (e) => {
+//     e.preventDefault();
+//     // e.target gives us access to DOM and the .elements gives us access to the values of form
+//     console.log(e.target.elements.firstName.value)
+//     e.target.elements.firstName.value = '';
+// })
 
 // you can also chain these together (refer to udemy for reference)
 
