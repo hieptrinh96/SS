@@ -1,54 +1,11 @@
-const todos = [{
-    text: 'Order dog food',
-    completed: false
-    }, {
-        text: 'Clean kitchen',
-        completed: true
-    }, {
-        text: 'buy food',
-        completed: true
-    }, {
-        text: 'Study more',
-        completed: false
-    }, {
-        text: 'Exercise',
-        completed: true
-    }];
+let todos = getSavedTodos();
 
     const filters = {
         searchText: '',
         hideCompleted: false 
     }
 
-    const renderedTodos = (todos, filters) => {
-        // we still need to be able to search through the todos 
-        const filteredTodos = todos.filter(task => {
-            const searchTextMatch = task.text.toLowerCase().includes(filters.searchText.toLowerCase());
-            const hideCompletedMatch = !filters.hideCompleted || !task.completed;
-            return searchTextMatch && hideCompletedMatch;
-        })
-        // filter out which tasks are left, save the value to a variable
-        const incompleteTasks = filteredTodos.filter(task => !task.completed)
-        // clearing the inputs
-        document.querySelector('#todo').innerHTML = '';
-        // create a new h2 tag
-        const summary = document.createElement('h2');
-        // set the textContent of summary to have our message
-        summary.textContent = `You have ${incompleteTasks.length} tasks left`;
-        // add that summary variable to our body
-        // before we create new p tags, we want to remove the other tasks that don't match the one we want
-        
-        document.querySelector('#todo').appendChild(summary)
-        document.querySelector('#search-text').innerHTML = '';
-        filteredTodos.forEach(task => {
-            // iterate through our todos array and create a new tag for each item
-            const paragraphs = document.createElement('p');
-            // set the content of each p tag to our todo.text
-            paragraphs.textContent = task.text;
-            // add each todo.text to our body
-            document.querySelector('#todo').appendChild(paragraphs);
-        })
-    }
+
     renderedTodos(todos, filters);
 
 // since we created the button tag in the html, we don't need to create it here
@@ -77,6 +34,7 @@ document.querySelector('#task-adder').addEventListener('submit', (e) => {
         text: e.target.elements.text.value,
         completed: false
     })
+    savedTodos(todos);
     renderedTodos(todos, filters);
     e.target.elements.text.value = '';
 })
@@ -87,7 +45,6 @@ document.querySelector('#hide-completed').addEventListener('change', (e) => {
     renderedTodos(todos, filters);
 })
 
-// create a new checkbox and setup even listener (hide completed)
-// create new hidecompleted filter (default false)
-// update hidecompleted and rerender list on checkbox change
-// setup rendertodos to remove completed items
+// delete dummy data
+// read and parse the data when the app starts up
+// stringify and write the data when new daya is added 

@@ -1,14 +1,32 @@
 // DOM stands for document Object Model 
-const notes = [{
-    title: 'my next trip',
-    body: 'I would like to go to Spain'
-    }, {
-        title: 'Habbits to work on',
-        body: 'Exercise. Eat a bit better.'
-    }, {
-        title: 'office modifications',
-        body: 'Get a new seat'
-    }]
+const notes = getSavedNotes()
+            // local storage lesson 
+// storing data and fetching it later
+// must be able to perform the 4 basic CRUD operations: Create, Read, Update, and Delete
+// Create
+// localStorage.setItem('location','Leander')
+// // Read
+// localStorage.getItem('location')
+// // Delete
+// localStorage.removeItem('location');
+// // this will clear all the data within the local storage
+// localStorage.clear()
+
+// const user = {
+//     name: 'Mike',
+//     age: 27
+// }
+// // JS OIbject Notation
+// // stringify takes in an object or array and turns it into a string
+// const userJSON = JSON.stringify(user);
+//  localStorage.setItem('user', userJSON);
+
+// but since it is a string, we're unable to access the object's data such as name or age
+// to access it, we must change it back into an object/array with the parse method 
+// const userJSON = localStorage.getItem('user')
+// const user = JSON.parse(userJSON)
+
+
 // we can mutate that specific p tag with querySelector
 // querySelector only looks at the first p element, will not affect the other p's
 // const p = document.querySelector('p')
@@ -38,29 +56,19 @@ const notes = [{
 const filters = {
     searchText: ''
 }
-// our function allows us to filter/find notes
-const renderNotes = (notes, filters) => {
-    // we're returning the notes.title that matches wat the user inputs on the webpage
-    const filteredNotes = notes.filter(note => note.title.toLowerCase().includes(filters.searchText.toLowerCase()));
-    // This allows us to remove the notes that do not match the one the user is searching for
-    // we want to use a div since if we use body, we would clear everything 
-    document.querySelector('#notes').innerHTML = '';
-    // this creates a new p tag for the ones the user searches for
-    filteredNotes.forEach(note => {
-        const noteEl = document.createElement('p');
-        noteEl.textContent = note.title;
-        // we're adding the div element since 
-        document.querySelector('#notes').appendChild(noteEl);
-    })
-}
-
 //  call the function once 
 renderNotes(notes, filters)
 
 // to get access to an element
 document.querySelector('#create-note').addEventListener('click', (e) => {
     // the e.target allows us to change the button once it is clicked 
-    e.target.textContent = 'The button was clicked';
+    // e.target.textContent = 'The button was clicked';
+    notes.push({
+        title: '',
+        body: '',
+    })
+    localStorage.setItem('notes', JSON.stringify(notes))
+    renderNotes(notes, filters);
 })
 
 
