@@ -2,14 +2,16 @@
 <html>
     <head></head>
     <body>
-        <h1> Todo App</h1>
-
-        <input id="search-text" type="text" placeholder="Filter todos">
-        <label>
-            <input id="Hide-Completed" type="checkbox">Hide Completed
-        </label>
-        <button id="new-todo">Add to list</button>
-        <div id="chores"></div>
-        <script src="todo-app.js"></script>
+         <h1>Todo Checklist</h1>
+         <input id="search-text" placeholder="Search">
+         <label>
+            <input type="checkbox" id="hide-completed">Hide Completed
+         </label>
+         <div id="todo"></div>
+         <form id="task-adder">
+            <input id="todo-next" placeholder="Add a task" name="text">
+            <button>Add a task</button>
+         </form>
+         <script src="todo-app.js"></script>
     </body>
 </html>
