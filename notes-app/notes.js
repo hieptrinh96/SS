@@ -64,6 +64,7 @@ document.querySelector('#create-note').addEventListener('click', (e) => {
     // the e.target allows us to change the button once it is clicked 
     // e.target.textContent = 'The button was clicked';
     notes.push({
+        id: uuidv4(),
         title: '',
         body: '',
     })

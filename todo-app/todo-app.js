@@ -31,6 +31,7 @@ document.querySelector('#task-adder').addEventListener('submit', (e) => {
     // we're adding a new task to our todo list 
     todos.push({
         // we're setting the value of whatever that task is to what the user inputs
+        id: uuidv4(),
         text: e.target.elements.text.value,
         completed: false
     })
@@ -45,6 +46,6 @@ document.querySelector('#hide-completed').addEventListener('change', (e) => {
     renderedTodos(todos, filters);
 })
 
-// delete dummy data
-// read and parse the data when the app starts up
-// stringify and write the data when new daya is added 
+// wire up the button event
+// remove todo by id
+// save and rerender the todos list
