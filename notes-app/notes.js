@@ -1,5 +1,5 @@
 // DOM stands for document Object Model 
-const notes = getSavedNotes()
+let notes = getSavedNotes()
             // local storage lesson 
 // storing data and fetching it later
 // must be able to perform the 4 basic CRUD operations: Create, Read, Update, and Delete
@@ -63,13 +63,15 @@ renderNotes(notes, filters)
 document.querySelector('#create-note').addEventListener('click', (e) => {
     // the e.target allows us to change the button once it is clicked 
     // e.target.textContent = 'The button was clicked';
+    const id = uuidv4();
     notes.push({
-        id: uuidv4(),
+        id: id,
         title: '',
         body: '',
     })
     localStorage.setItem('notes', JSON.stringify(notes))
-    renderNotes(notes, filters);
+    // renderNotes(notes, filters);
+    location.assign(`/note.html#${id}`);
 })
 
 
@@ -86,3 +88,13 @@ document.querySelector('#search-text').addEventListener('input', (e) => {
 document.querySelector('#filtered-by').addEventListener('change', (e) => {
     console.log(e.target.value)
 })
+window.addEventListener('storage', (e) => {
+    if (e.key === 'notes') {
+        notes = JSON.parse(e.newValue);
+        renderNotes(notes, filters)
+    }
+})
+
+
+
+
