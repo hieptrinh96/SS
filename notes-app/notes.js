@@ -54,7 +54,8 @@ let notes = getSavedNotes()
 // // so since we want to add it to the body, it will be added after all the other elements in the body 
 // document.querySelector('body').appendChild(newParagraph)
 const filters = {
-    searchText: ''
+    searchText: '',
+    sortBy: 'byEdited'
 }
 //  call the function once 
 renderNotes(notes, filters)
@@ -63,11 +64,14 @@ renderNotes(notes, filters)
 document.querySelector('#create-note').addEventListener('click', (e) => {
     // the e.target allows us to change the button once it is clicked 
     // e.target.textContent = 'The button was clicked';
+    const timeStamp = moment().valueOf();
     const id = uuidv4();
     notes.push({
         id: id,
         title: '',
         body: '',
+        createdAt: timeStamp,
+        updateAt: timeStamp
     })
     localStorage.setItem('notes', JSON.stringify(notes))
     // renderNotes(notes, filters);
@@ -86,7 +90,8 @@ document.querySelector('#search-text').addEventListener('input', (e) => {
 })
 
 document.querySelector('#filtered-by').addEventListener('change', (e) => {
-    console.log(e.target.value)
+    filters.sortBy = e.target.value;
+    renderNotes(notes, filters);
 })
 window.addEventListener('storage', (e) => {
     if (e.key === 'notes') {
@@ -94,6 +99,7 @@ window.addEventListener('storage', (e) => {
         renderNotes(notes, filters)
     }
 })
+
 
 
 
