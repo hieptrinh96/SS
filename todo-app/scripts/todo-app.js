@@ -27,17 +27,20 @@ document.querySelector('#search-text').addEventListener('input', (e) => {
     renderedTodos(todos, filters)
 })
 document.querySelector('#task-adder').addEventListener('submit', (e) => {
+    const text = e.target.elements.text.value.trim();
     e.preventDefault();
-    // we're adding a new task to our todo list 
-    todos.push({
-        // we're setting the value of whatever that task is to what the user inputs
-        id: uuidv4(),
-        text: e.target.elements.text.value,
-        completed: false
-    })
-    savedTodos(todos);
-    renderedTodos(todos, filters);
-    e.target.elements.text.value = '';
+    if (text.length > 0) {
+        // we're adding a new task to our todo list 
+        todos.push({
+            // we're setting the value of whatever that task is to what the user inputs
+            id: uuidv4(),
+            text,
+            completed: false
+        })
+        savedTodos(todos);
+        renderedTodos(todos, filters);
+        e.target.elements.text.value = '';
+    }
 })
 
 document.querySelector('#hide-completed').addEventListener('change', (e) => {

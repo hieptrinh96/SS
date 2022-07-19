@@ -1,5 +1,5 @@
 const getPuzzle = async (wordCount) => {
-    const response = await fetch(`http://puzzle.mead.io/puzzle?wordCount=${wordCount}`);
+    const response = await fetch(`//puzzle.mead.io/puzzle?wordCount=${wordCount}`);
 
     if (response.status === 200) {
         const data = await response.json();
@@ -14,7 +14,7 @@ const getCurrentCountry = async () => {
 }
 
 const getCountry = async (countryCode) => {
-    const response = await fetch('http://restcountries.eu/rest/v2/all');
+    const response = await fetch('//restcountries.eu/rest/v2/all');
 
     if (response.status === 200) {
         const data = await response.json();
@@ -24,7 +24,7 @@ const getCountry = async (countryCode) => {
 }
 
 const getLocation = async () => {
-    const response = await fetch('http://ipinfo.io/json?token=1a11bd55cc8f9c');
+    const response = await fetch('//ipinfo.io/json?token=1a11bd55cc8f9c');
 
     if (response.status === 200) return response.json();
     else throw new Error('Unable to get the current location');
