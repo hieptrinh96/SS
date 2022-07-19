@@ -9,8 +9,8 @@ html {
 }
 
 body {
-    background: #2B292E;
-    color: #fafafa;
+    background: #2b292e;
+    color:#fafafa;
     font-family: Helvetica, Arial, sans-serif;
     font-size: 1.6rem;
     display: flex;
@@ -27,13 +27,13 @@ span {
     line-height: 2.4rem;
     margin: 0 .1rem;
     text-align: center;
-    text-transform: uppercase;
+    text-transform: upperCase;
     width: 2.4rem;
 }
 
 p {
     font-weight: 300;
-    margin-bottom: .8rem;
+    margin-bottom:.8rem;
 }
 
 .puzzle {
@@ -54,5 +54,5 @@ p {
 }
 
 .button:hover {
-    background: #5F3A87;
+    background: #5f3a87;
 }
