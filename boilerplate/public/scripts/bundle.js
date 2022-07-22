@@ -1,1 +1,2 @@
-(()=>{"use strict";console.log("utilities.js"),console.log("index.js"),console.log(33),console.log("".concat("Trinh".toUpperCase(),"!")),console.log(10*10)})();
+(()=>{"use strict";console.log("utilities.js"),console.log("From my code"),console.log("index.js"),console.log(33),console.log("".concat("Trinh".toUpperCase(),"!")),console.log(10*10)})();
+//# sourceMappingURL=bundle.js.map

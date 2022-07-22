@@ -1,4 +1,4 @@
-
+'use strict'
 const titleElement = document.querySelector('#note-title')
 const bodyElement = document.querySelector('#note-body')
 const removeElement = document.querySelector('#butt')
@@ -43,8 +43,3 @@ window.addEventListener('storage', (e) => {
         dateElement.textContent = generateLastEdited(note.updatedAt)
     }
 })
-
-//set up input event for title
-// update note object and save notes list
-// repeat steps 1-2 for body 
-// 
