@@ -4,7 +4,24 @@
         <title>Random App Idea</title>
     </head>
     <body>
-        <h1>Does what you want</h1>
-
+        <header class="header">
+            <div class="container">
+                <h1 class="header_title">Note taking app</h1>
+                <h2 class="header__subtitle"> For anything and everything</h2>
+            </div>
+        </header>
+        <div class="actions">
+            <div ckass="actions__container">
+                <input id="search-text" type="text" class="input" placeholder="Search">
+                <select id="filter-by" class="dropdown">
+                    <option value="byCreated">Sort by recently created</option>
+                    <option value="alphabetically">Sort alphabetically</option>
+                </select>
+            </div>
+        </div>
+        <div class="container">
+            <div id="notes"></div>
+            <button id="create-note" class="button">Create a note</button>
+        </div>
     </body>
 </html>
