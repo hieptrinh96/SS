@@ -47,7 +47,7 @@ app.get('/weather', (req, res) => {
     if (!req.query.address) return res.send({
         error: 'You must provide an address.'
     })
-    geocode(req.query.address, (error, { latitude, longitude, location }) => {
+    geocode(req.query.address, (error, { latitude, longitude, location } = {}) => {
         if (error) return res.send({error})
         forecast(latitude, longitude, (error, forecastData) => {
             if (error) return res.send({error})
@@ -82,7 +82,7 @@ app.get('/help/*', (req, res) => {
 // matches anything that we did not have set up 
 //res.render tells us which page to look at and what type of information 
 // that page would need 
-app.get('*', (req,res) => {
+app.get('*', (req, res) => {
     res.render('404', {
         title: '404',
         name: 'Mike',
